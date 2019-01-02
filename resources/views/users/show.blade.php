@@ -81,8 +81,10 @@
                     </ul>
                 </div>
             </div>
-            {{-- <h4 class="card-title">Title</h4>
-            <p class="card-text">Text</p> --}}
+            <div class="col-3">
+                    <a name="backToCategory" id="backToCategory" class="btn btn-block btn-primary" href="/users/" role="button">Back</a>
+                </div>
+            </div>
         </div>
     </div>
 @endsection

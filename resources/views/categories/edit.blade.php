@@ -17,21 +17,21 @@
 
             <input type="hidden" name="_method" value="PUT">
     
-            <div class="form-group col-lg-6">
+            <div class="form-group col-lg-4">
                 <label for="category">Category</label>
-                    <input type="text" class="form-control" name="categoryName" id="category" placeholder="Enter Category Name" value="{{$category->name}}" aria-describedby="slug">
+                    <input type="text" class="form-control" name="categoryName" id="category" placeholder="Enter Category Name" value="{{$category->name}}" aria-describedby="slug" required>
                 <small id="slug" class="form-text text-muted">{{$category->slug}}</small>
             </div>
 
-            <div class="form-group col-lg-6">
+            <div class="form-group col-lg-12">
                 <label for="categoryImage">Category Image</label><br>
                 <div class="form-inline">
-                    @if ($category->avatar)
-                        <img src="{{asset('storage/'.$category->avatar)}}" height="150px">
+                    @if ($category->image)
+                        <img src="{{asset('storage/'.$category->image)}}" height="150px" class="bordered"">
                     @else
-                        N/A &nbsp;&nbsp;
+                        N/A
                     @endif
-                    <input type="file" class="form-control" name="categoryImage" id="categoryImage">
+                    <input type="file" class="form-control" name="categoryImage" id="categoryImage" style="margin-left:20px">
                 </div>
             </div>
 

@@ -26,8 +26,9 @@
             <table class="table table-hover text-center">
                 <thead class="thead-inverse">
                     <tr>
-                        <th>Id</th>
                         <th></th>
+                        <th>Id</th>
+                        <th>Icon</th>
                         <th>Name</th>
                         <th>Created By</th>
                         <th>Action</th>
@@ -36,7 +37,10 @@
                 <tbody>
                     @foreach ($categories as $category)
                         <tr>
-                            <td scope="row">{{$category->id}}</td>
+                            <td  scope="row">
+                                <a class="btn btn-sm btn-block btn-success" href="{{route('categories.show',['id'=>$category->id])}}" role="button">Detail</a>
+                            </td>
+                            <td>{{$category->id}}</td>
                             <td>
                                 @if ($category->image)
                                     <img src="{{asset('storage/'.$category->image)}}" height="50px">
@@ -45,7 +49,7 @@
                                 @endif
                             </td>
                             <td>{{$category->name}}</td>
-                            <td>{{$category->created_by}}</td>
+                            <td>{{$category->created_by}} ({{$category->user->email}})</td>
                             <td>
                                 <a name="" id="" class="btn btn-lg btn-primary" href="{{route('categories.edit', ['id' => $category->id])}} " role="button">Edit</a>
                                 <a name="" id="" class="btn btn-danger btn-lg" href="" role="button">Delete</a>

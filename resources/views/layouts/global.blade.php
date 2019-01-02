@@ -70,6 +70,9 @@
                     <li>
                         <a href="/users/"><span class="oi oi-person"></span> Manage User </a>
                     </li>
+                    <li>
+                        <a href="/categories/"><span class="oi oi-menu"></span> Manage Category </a>
+                    </li>
                     <div class="d-block d-md-none">
                         <div class="dropdown-divider"></div>
                         <li><a href="#"> Profile</a></li>

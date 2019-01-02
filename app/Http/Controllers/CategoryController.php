@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use \App\Category;
 use \App\User;
+use Auth;
 
 class CategoryController extends Controller
 {
@@ -67,7 +68,9 @@ class CategoryController extends Controller
      */
     public function show($id)
     {
-        //
+        $category = Category::find($id);
+
+        return view('categories.show',['category'=>$category]);
     }
 
     /**
@@ -107,6 +110,8 @@ class CategoryController extends Controller
             $category->image = $newImage;
         }
 
+        $category->updated_by = \Auth::id();
+
         $category->save();
 
         return redirect()->route('categories.edit',['id'=>$id])->with('status','Category has been updated');
@@ -122,4 +127,6 @@ class CategoryController extends Controller
     {
         //
     }
+
+    
 }
