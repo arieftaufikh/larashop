@@ -22,7 +22,7 @@ class CategoryController extends Controller
             $categories = Category::where('name','LIKE',"%$filterCategory%")->paginate(10);
         }
 
-        return view('categories.index',['categories'=>$categories]);
+        return view('categories.index',['categories'=>$categories ]);
     }
 
     /**
@@ -78,7 +78,9 @@ class CategoryController extends Controller
      */
     public function edit($id)
     {
-        //
+        $category_to_edit = Category::findOrFail($id);
+
+        return view('categories.edit',['category'=>$category_to_edit]);
     }
 
     /**
@@ -90,7 +92,24 @@ class CategoryController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+
+        $category = Category::findOrFail($id);
+
+        $category->name = $request->get('categoryName');
+        $category->slug = str_slug($request->get('categoryName'),'-');
+
+        if ($request->file('categoryImage')) {
+            if ($category->image && file_exists(storage_path('app/public/'.$category->image))) {
+                \Storage::delete(['public.', $category->image]);
+            }
+
+            $newImage = $request->file('categoryImage')->store('categoryImage','public');
+            $category->image = $newImage;
+        }
+
+        $category->save();
+
+        return redirect()->route('categories.edit',['id'=>$id])->with('status','Category has been updated');
     }
 
     /**

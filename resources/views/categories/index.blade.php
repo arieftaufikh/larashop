@@ -45,7 +45,7 @@
                                 @endif
                             </td>
                             <td>{{$category->name}}</td>
-                            <td>User Username Here</td>
+                            <td>{{$category->created_by}}</td>
                             <td>
                                 <a name="" id="" class="btn btn-lg btn-primary" href="{{route('categories.edit', ['id' => $category->id])}} " role="button">Edit</a>
                                 <a name="" id="" class="btn btn-danger btn-lg" href="" role="button">Delete</a>
